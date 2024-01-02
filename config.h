@@ -26,42 +26,42 @@ static const char *fonts[]          = { "saucecodepro nerd font:size=9","siji:9"
 static const char dmenufont[]            = "saucecodepro nerd font:size=9";
 
 static char normfgcolor[]                = "#ededed";
-static char normbgcolor[]                = "#222222";
+static char normbgcolor[]                = "#000000";
 static char normbordercolor[]            = "#0f0d0d";
 static char normfloatcolor[]             = "#db8fd9";
 
 static char selfgcolor[]                 = "#eeeeee";
-static char selbgcolor[]                 = "#BB9AF7";
-static char selbordercolor[]             = "#BB9AF7";
-static char selfloatcolor[]              = "#BB9AF7";
+static char selbgcolor[]                 = "#ab1916";
+static char selbordercolor[]             = "#ab1916";
+static char selfloatcolor[]              = "#ab1916";
 
 static char titlenormfgcolor[]           = "#ededed";
-static char titlenormbgcolor[]           = "#222222";
+static char titlenormbgcolor[]           = "#000000";
 static char titlenormbordercolor[]       = "#0f0d0d";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
 static char titleselfgcolor[]            = "#eeeeee";
-static char titleselbgcolor[]            = "#BB9AF7";
-static char titleselbordercolor[]        = "#BB9AF7";
-static char titleselfloatcolor[]         = "#BB9AF7";
+static char titleselbgcolor[]            = "#ab1916";
+static char titleselbordercolor[]        = "#ab1916";
+static char titleselfloatcolor[]         = "#ab1916";
 
 static char tagsnormfgcolor[]            = "#ededed";
-static char tagsnormbgcolor[]            = "#222222";
+static char tagsnormbgcolor[]            = "#000000";
 static char tagsnormbordercolor[]        = "#0f0d0d";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#eeeeee";
-static char tagsselbgcolor[]             = "#BB9AF7";
-static char tagsselbordercolor[]         = "#BB9AF7";
-static char tagsselfloatcolor[]          = "#BB9AF7";
+static char tagsselbgcolor[]             = "#ab1916";
+static char tagsselbordercolor[]         = "#ab1916";
+static char tagsselfloatcolor[]          = "#ab1916";
 
-static char hidfgcolor[]                 = "#BB9AF7";
-static char hidbgcolor[]                 = "#222222";
-static char hidbordercolor[]             = "#BB9AF7";
+static char hidfgcolor[]                 = "#ab1916";
+static char hidbgcolor[]                 = "#000000";
+static char hidbordercolor[]             = "#ab1916";
 static char hidfloatcolor[]              = "#f76e0c";
 
 static char urgfgcolor[]                 = "#ededed";
-static char urgbgcolor[]                 = "#222222";
+static char urgbgcolor[]                 = "#000000";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
@@ -364,6 +364,9 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
 	{ MODKEY, 			            XK_w,          killclient,             {0} },
 	{ MODKEY|ShiftMask,             XK_q,          quit,                   {0} },
+	#if RESTARTSIG_PATCH
+	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,                   {1} },
+	#endif // RESTARTSIG_PATCH
 	{ MODKEY,                       XK_t,          setlayout,              {.v = &layouts[0]} },
 	{ MODKEY,                       XK_m,          setlayout,              {.v = &layouts[1]} },
 	{ MODKEY|ControlMask,           XK_t,          rotatelayoutaxis,       {.i = +1 } },   /* flextile, 1 = layout axis */
