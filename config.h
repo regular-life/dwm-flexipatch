@@ -267,9 +267,13 @@ static const char *volmute[] = {"volume.sh",  "mute"};
 static const char *plrplay[] = {"playerctl", "--player=mpd,firefox, vlc", "play-pause"};
 static const char *plrnxt[] = {"playerctl", "--player=mpd,firefox, vlc", "next"};
 static const char *plrprev[] = {"playerctl", "--player=mpd,firefox, vlc", "previous"};
-static const char *roficmd[]  = { "/home/sophos/.config/rofi/launchers/text/launcher.sh"};
-static const char *music[] = {"st", "-e" , "/home/sophos/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"};
-/* static const char *music[] = {"alacritty", "-e" , "ncmpcpp"}; */
+// static const char *roficmd[]  = { "/home/sophos/.config/rofi/launchers/text/launcher.sh"};
+// static const char *music[] = {"st", "-e" , "/home/sophos/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"};
+static const char *spotify[] = {"spotify", NULL};
+static const char *switchWallpaper[] = {"forWallpaper"} ;
+static const char *switchLockscreen[] = {"forLockscreen"} ;
+static const char *suspend_and_lock[] = {"sh", "-c", "systemctl suspend && betterlockscreen -l", NULL};
+static const char *brave[] = {"brave-browser-nightly", NULL };
 static const char *news[] = {"st", "-e" ,"newsboat"};
 //static const char *plrplay[] = {"playerctl", "play-pause"};
 //static const char *plrnxt[] = {"playerctl",  "next"};
@@ -277,13 +281,13 @@ static const char *news[] = {"st", "-e" ,"newsboat"};
 static Key keys[] = {
 	/* modifier                     key            function                argument */
   
-    { MODKEY|ShiftMask,             XK_b, 	       setborderpx,    {.i = default_border } },
-    { MODKEY|ShiftMask,             XK_minus, 		setborderpx,    {.i = -1 } },
-    { MODKEY|ShiftMask,             XK_equal, 	        setborderpx,    {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_b, 	       setborderpx,    			{.i = default_border } },
+    { MODKEY|ShiftMask,             XK_minus, 	   setborderpx,    			{.i = -1 } },
+    { MODKEY|ShiftMask,             XK_equal, 	   setborderpx,    			{.i = +1 } },
 	#if SCRATCHPAD_ALT_1_PATCH
 	{ MODKEY,                       XK_minus,      scratchpad_show,        {0} },
 	{ MODKEY|ShiftMask,             XK_minus,      scratchpad_hide,        {0} },
-        { MODKEY,                       XK_equal,      scratchpad_remove,      {0} },
+    { MODKEY,                       XK_equal,      scratchpad_remove,      {0} },
 	#elif SCRATCHPADS_PATCH
 	{ MODKEY,                       XK_0,          view,                   {.ui = ~SPTAGMASK } },
 	{ MODKEY|ShiftMask,             XK_0,          tag,                    {.ui = ~SPTAGMASK } },
@@ -292,7 +296,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,          tag,                    {.ui = ~0 } },
 	#endif // SCRATCHPAD_ALT_1_PATCH
 	#if SCRATCHPADS_PATCH
-	{ MODKEY|Mod1Mask,                       XK_grave,      togglescratch,          {.ui = 0 } },
+	{ MODKEY|Mod1Mask,              XK_grave,      togglescratch,          {.ui = 0 } },
 	{ MODKEY|ControlMask,           XK_grave,      setscratch,             {.ui = 0 } },
 	{ MODKEY|ShiftMask,             XK_grave,      removescratch,          {.ui = 0 } },
 	#endif // SCRATCHPADS_PATCH
@@ -305,18 +309,24 @@ static Key keys[] = {
         
 
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn,        {.v = volinc   } },
-        { 0,                            XF86XK_AudioLowerVolume, spawn,        {.v = voldec } },
+    { 0,                            XF86XK_AudioLowerVolume, spawn,        {.v = voldec } },
 	{ 0,                            XF86XK_AudioMute, spawn,               {.v = volmute } },
         
-	{ MODKEY,                       XK_Return,     spawn, 		       {.v = termcmd } },
+	{ MODKEY,                       XK_Return,     spawn, 		       		{.v = termcmd } },
 	{ MODKEY,                       XK_grave,      cyclelayout, 	       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = dmenucmd } },
   // { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = roficmd} }, 
-	{ MODKEY,	                XK_f,          spawn,          	       {.v = firefox } },
-	{ MODKEY,	                XK_s,          spawn,  		       {.v = subl } },
-	{ MODKEY,	                XK_e,          spawn,          	       {.v = pcmanfm } },
-	{ MODKEY,	                XK_o,          spawn,                  {.v = okular } },
-	{ MODKEY,	                XK_d,          spawn,                  {.v = discord } },
+	{ MODKEY,	                	XK_f,          spawn,          	       {.v = firefox } },
+	{ MODKEY,	                	XK_s,          spawn,  		       	   {.v = subl } },
+	{ MODKEY,	                	XK_e,          spawn,          	       {.v = pcmanfm } },
+	{ MODKEY,	                	XK_o,          spawn,                  {.v = okular } },
+	{ MODKEY,	                	XK_d,          spawn,                  {.v = discord } },
+	{ MODKEY, 					 	XK_p,          spawn,                  {.v = spotify } },
+	{ MODKEY|ShiftMask,             XK_Escape,     spawn,                  {.v = suspend_and_lock }	
+	{ MODKEY|ControlMask,			XK_l,	       spawn,				   {.v = switchLockscreen} },
+	{ MODKEY|ControlMask, 			XK_w, 		   spawn,			       {.v = switchWallpaper} },
+	{ MODKEY, 						XK_r, 		   spawn,				   {.v = brave}},
+	
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
