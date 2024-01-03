@@ -300,7 +300,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_grave,      setscratch,             {.ui = 0 } },
 	{ MODKEY|ShiftMask,             XK_grave,      removescratch,          {.ui = 0 } },
 	#endif // SCRATCHPADS_PATCH
-	{ MODKEY,                       XK_p,           spawn, 		       {.v = music} },
+	// { MODKEY,                       XK_p,           spawn, 		       {.v = music} },
 	{ MODKEY,                       XK_n,           spawn, 		       {.v = news} },
 	{ MODKEY|ShiftMask,             XK_y,           togglefakefullscreen,  {0} },
 	{ 0,                            XK_F8,          spawn, 		       {.v = plrplay} },
@@ -322,7 +322,7 @@ static Key keys[] = {
 	{ MODKEY,	                	XK_o,          spawn,                  {.v = okular } },
 	{ MODKEY,	                	XK_d,          spawn,                  {.v = discord } },
 	{ MODKEY, 					 	XK_p,          spawn,                  {.v = spotify } },
-	{ MODKEY|ShiftMask,             XK_Escape,     spawn,                  {.v = suspend_and_lock }	
+	{ MODKEY,             			XK_Escape,     spawn,                  {.v = suspend_and_lock }	},
 	{ MODKEY|ControlMask,			XK_l,	       spawn,				   {.v = switchLockscreen} },
 	{ MODKEY|ControlMask, 			XK_w, 		   spawn,			       {.v = switchWallpaper} },
 	{ MODKEY, 						XK_r, 		   spawn,				   {.v = brave}},
