@@ -191,13 +191,12 @@ static const Rule rules[] = {
  *    name - does nothing, intended for visual clue and for logging / debugging
  */
 static const BarRule barrules[] = {
-	/* monitor  bar    alignment         widthfunc                drawfunc                clickfunc                name */
-	{ -1,       0,     BAR_ALIGN_LEFT,   width_tags,              draw_tags,              click_tags,              "tags" },
-	{  0,       0,     BAR_ALIGN_RIGHT,  width_systray,           draw_systray,           click_systray,           "systray" },
-	{ -1,       0,     BAR_ALIGN_LEFT,   width_ltsymbol,          draw_ltsymbol,          click_ltsymbol,          "layout" },
-	// { 'A',      0,     BAR_ALIGN_RIGHT,  width_status,            draw_status,            click_status,            "status" },
-	{ 'A',      0,     BAR_ALIGN_RIGHT,  width_status2d,          draw_status2d,          click_status2d,          "status2d" },
-	{ -1,       0,     BAR_ALIGN_NONE,   width_awesomebar,        draw_awesomebar,        click_awesomebar,        "awesomebar" },
+    /* monitor  bar    alignment         widthfunc        drawfunc        clickfunc        hoverfunc    name */
+    { -1,       0,     BAR_ALIGN_LEFT,   width_tags,      draw_tags,      click_tags,      NULL,        "tags" },
+    {  0,       0,     BAR_ALIGN_RIGHT,  width_systray,   draw_systray,   click_systray,   NULL,        "systray" },
+    { -1,       0,     BAR_ALIGN_LEFT,   width_ltsymbol,  draw_ltsymbol,  click_ltsymbol,  NULL,        "layout" },
+    { 'A',      0,     BAR_ALIGN_RIGHT,  width_status2d,  draw_status2d,  click_status2d,  NULL,        "status2d" },
+    { -1,       0,     BAR_ALIGN_NONE,   width_awesomebar,draw_awesomebar,click_awesomebar,NULL,        "awesomebar" },
 };
 
 /* layout(s) */
@@ -270,7 +269,7 @@ static const char *plrnxt[] = {"playerctl", "--player=mpd,firefox, vlc", "next"}
 static const char *plrprev[] = {"playerctl", "--player=mpd,firefox, vlc", "previous"};
 // static const char *roficmd[]  = { "/home/sophos/.config/rofi/launchers/text/launcher.sh"};
 // static const char *music[] = {"st", "-e" , "/home/sophos/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"};
-static const char *spotify[] = {"spotify", NULL};
+static const char *spotify[] = {"spotify-launcher", NULL};
 static const char *switchWallpaper[] = {"forWallpaper"} ;
 static const char *switchLockscreen[] = {"forLockscreen"} ;
 static const char *suspend_and_lock[] = {"sh", "-c", "systemctl suspend && betterlockscreen -l", NULL};
